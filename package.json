@@ -1,0 +1,22 @@
+{
+  "name": "speedtest",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:chrisfrank/speedtest.git",
+  "author": "Chris Frank <chris.frank@thefutureproject.org>",
+  "license": "MIT",
+  "engines": {
+    "node": "7.1.0"
+  },
+  "dependencies": {
+    "express": "^4.14.0",
+    "express-generator": "^4.14.0",
+    "foreman": "^2.0.0",
+    "sequelize": "^3.27.0",
+    "sequelize-cli": "^2.4.0",
+    "sqlite3": "^3.1.8"
+  },
+  "scripts": {
+    "start": "node main.js"
+  }
+}
