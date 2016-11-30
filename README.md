@@ -19,13 +19,56 @@ Each app gets hit three times, returning 10, 100, and then 1,000 JSON records se
 
 ## Results
 
-I ran the benchmark three times on my local iMac. Sinatra was a little faster every time.
+I ran the benchmark three times on my quad-core iMac i5. Sinatra was a little faster every time.
 
-I wondered if running the test locally was messing up the results, so I also ran a version of the test where `ab` ran from an EC2 Micro Instance, and each app (`main.js` and `main.rb`) ran on a separate Heroku 1x Dyno. The results were the same: Sinatra was a little faster every time.
+### Sinatra vs Express, Requests per Second
+
+|             | 10 Posts | 100 Posts | 1000 Posts | 
+|-------------|----------|-----------|------------| 
+| Sinatra AVG | 1281     | 654       | 109        | 
+| Express AVG | 1179     | 578       | 92         | 
+| Sinatra 1   | 1282     | 656       | 109        | 
+| Express 1   | 1188     | 562       | 93         | 
+| Sinatra 2   | 1281     | 655       | 110        | 
+| Express 2   | 1173     | 606       | 91         | 
+| Sinatra 3   | 1279     | 651       | 109        | 
+| Express 3   | 1176     | 566       | 93         | 
+
+### Sinatra vs Express, Mean Response Time
+
+|             | 10 Posts | 100 Posts | 1000 Posts | 
+|-------------|----------|-----------|------------| 
+| Sinatra AVG | 39ms     | 76ms      | 458ms      | 
+| Express AVG | 42ms     | 86ms      | 541ms      | 
+| Sinatra 1   | 39ms     | 76ms      | 460ms      | 
+| Express 1   | 42ms     | 89ms      | 539ms      | 
+| Sinatra 2   | 39ms     | 76ms      | 453ms      | 
+| Express 2   | 42ms     | 82ms      | 547ms      | 
+| Sinatra 3   | 39ms     | 77ms      | 460ms      | 
+| Express 3   | 42ms     | 88ms      | 536ms      | 
+
+
+I wondered if running the test locally was messing up the results, so I also ran a variation of the test where `ab` ran from an EC2 Micro instance, and each app (`main.js` and `main.rb`) ran on a separate Heroku 1x Dyno. The results were the same: Sinatra was a little faster every time.
+
+# Sinatra vs Express, Requests/Sec, on Independent Heroku Dynos
+
+| REQ/S   | 10  Posts | 1000 Posts | 1000 Posts | 
+|---------|-----------|------------|------------| 
+| Sin AVG | 612       | 284        | 57         | 
+| Ex AVG  | 435       | 206        | 32         | 
+| Sin 1   | 512       | 175        | 53         | 
+| Sin 2   | 660       | 323        | 57         | 
+| Sin 3   | 664       | 355        | 62         | 
+| Ex 1    | 346       | 200        | 32         | 
+| Ex 2    | 417       | 194        | 34         | 
+| Ex 3    | 541       | 223        | 30         | 
 
 
 ## Running the Benchmarks Yourself
-You need node.js, npm, ruby, and bundler installed on your system.
+
+I'd love to see whether other people get similar results.
+
+The tests are simple to run. You'll need [node.js](https://nodejs.org), [npm](https://www.npmjs.com), [ruby](https://www.ruby-lang.org), and [bundler](http://bundler.io) installed on your system. Once you have those:
 
 1. Clone the repo. `git clone https://github.com/chrisfrank/sinatra-vs-express.git`
 2. Run `bundle install` to install the ruby gems you'll need.
