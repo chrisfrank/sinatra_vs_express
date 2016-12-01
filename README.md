@@ -15,7 +15,7 @@ The Express app in `main.js` does exactly the same thing, but in JavaScript.
 
 Running `ruby benchmark.rb` starts both apps simultaneously, on different ports, then uses Apache Bench to bombard them with requests.
 
-Each app gets hit three times, returning 10, 100, and then 1,000 JSON records sequentially.
+Each app gets hit three times, returning 10, 100, and then 1,000 JSON records sequentially. I have `ab` set to run 2,000 requests, at a concurrency level of 50.
 
 ## Results
 
@@ -66,7 +66,7 @@ I wondered if running the test locally was messing up the results, so I also ran
 
 ## Running the Benchmarks Yourself
 
-I'd love to see whether other people get similar results.
+I'd love to see whether other people get similar results, especially if you tweak the `ab` concurrency level in `benchmark.rb`.
 
 The tests are simple to run. You'll need [node.js](https://nodejs.org), [npm](https://www.npmjs.com), [ruby](https://www.ruby-lang.org), and [bundler](http://bundler.io) installed on your system. Once you have those:
 
@@ -76,3 +76,6 @@ The tests are simple to run. You'll need [node.js](https://nodejs.org), [npm](ht
 4. Run `rake setup` to create a database and seed it with test records.
 5. Run `ruby benchmark.rb` to run the tests.
 
+Note that the Sinatra app is running [Puma](http://puma.io) as its server, set to the default single-worker, multi-threaded mode. I unscientifically tried [Thin](https://github.com/macournoyer/thin) too. Results were similar: it's a little faster than Express.
+
+Adding additional workers to Puma increased throughput by a lot, but I wanted to keep the official test simple and fair. If you're comfortable running Express in cluster mode with Throng or whatever, I'd love to see a multi-worker benchmark.
