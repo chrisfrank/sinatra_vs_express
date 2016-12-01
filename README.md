@@ -50,17 +50,17 @@ I ran the benchmark three times on my quad-core iMac i5. Sinatra was a little fa
 
 I wondered if running the test locally was messing up the results, so I also ran a variation of the test where `ab` ran from an EC2 Micro instance, and each app (`main.js` and `main.rb`) ran on a separate Heroku 1x Dyno. The results were the same: Sinatra was a little faster every time.
 
-# Sinatra vs Express, Requests/Sec, on Independent Heroku Dynos
+## Sinatra vs Express, Req/Sec, Independent Heroku Dynos
 
-| REQ/S   | 10  Posts | 1000 Posts | 1000 Posts | 
+|         | 10  Posts | 1000 Posts | 1000 Posts | 
 |---------|-----------|------------|------------| 
 | Sin AVG | 612       | 284        | 57         | 
 | Ex AVG  | 435       | 206        | 32         | 
 | Sin 1   | 512       | 175        | 53         | 
-| Sin 2   | 660       | 323        | 57         | 
-| Sin 3   | 664       | 355        | 62         | 
 | Ex 1    | 346       | 200        | 32         | 
+| Sin 2   | 660       | 323        | 57         | 
 | Ex 2    | 417       | 194        | 34         | 
+| Sin 3   | 664       | 355        | 62         | 
 | Ex 3    | 541       | 223        | 30         | 
 
 

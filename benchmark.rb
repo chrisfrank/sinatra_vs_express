@@ -17,6 +17,5 @@ servers.each do |server|
   end
 end
 
-#system "killall foreman"
 Process.kill("SIGTERM", pid)
 puts "Benchmarks complete"
