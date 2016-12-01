@@ -34,6 +34,11 @@ I ran the benchmark three times on my quad-core iMac i5. Sinatra was a little fa
 | Sinatra 3   | 1279     | 651       | 109        | 
 | Express 3   | 1176     | 566       | 93         | 
 
+![Requests per Second](https://raw.githubusercontent.com/chrisfrank/sinatra_vs_express/master/requests-per-second.jpg)
+
+(Longer bars are better.)
+
+
 ### Sinatra vs Express, Mean Response Time
 
 |             | 10 Posts | 100 Posts | 1000 Posts | 
@@ -46,6 +51,10 @@ I ran the benchmark three times on my quad-core iMac i5. Sinatra was a little fa
 | Express 2   | 42ms     | 82ms      | 547ms      | 
 | Sinatra 3   | 39ms     | 77ms      | 460ms      | 
 | Express 3   | 42ms     | 88ms      | 536ms      | 
+
+![Mean Response Time](https://raw.githubusercontent.com/chrisfrank/sinatra_vs_express/master/requests-per-second.jpg://raw.githubusercontent.com/chrisfrank/sinatra_vs_express/master/response-time.jpg)
+
+(Shorter bars are better.)
 
 
 I wondered if running the test locally was messing up the results, so I also ran a variation of the test where `ab` ran from an EC2 Micro instance, and each app (`main.js` and `main.rb`) ran on a separate Heroku 1x Dyno. The results were the same: Sinatra was a little faster every time.
