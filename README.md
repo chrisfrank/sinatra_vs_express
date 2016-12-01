@@ -1,11 +1,11 @@
 Sinatra vs Express Benchmarks
 =============================
 
-I love writing UI logic in JavaSript, but I still prefer Ruby on the server. It's more elegant, I think.
+I love writing UI logic in JavaSript, but I still prefer Ruby and Sinatra on the server.
 
-But is Ruby slower? If so, how much slower? I wrote this benchmark to find out.
+Is Ruby/Sinatra slower than Node/Express, though? If so, how much slower? I wrote this benchmark to find out.
 
-It turns out that, for the kind of work I do, at least, Sinatra is a little bit *faster* than Express.
+It turns out that, at least for the kind of work I do, Sinatra is a little *faster* than Express.
 
 ## The Test
 
@@ -19,7 +19,7 @@ Each app gets hit three times, returning 10, 100, and then 1,000 JSON records se
 
 ## Results
 
-I ran the benchmark three times on my quad-core iMac i5. Sinatra was a little faster every time.
+I ran the benchmark three times on my iMac i5. Sinatra was a little faster each time.
 
 ### Sinatra vs Express, Requests per Second
 
