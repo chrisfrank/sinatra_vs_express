@@ -15,7 +15,7 @@ var Post = db.define('post', {
 
 
 app.get("/", function(request, response) {
-  let pageSize = request.query.page_size || 100;
+  var pageSize = request.query.page_size || 100;
   Post.findAll({attributes: ['id','name'], limit: pageSize}).then(function(posts) {
     response.send(posts);
   })
